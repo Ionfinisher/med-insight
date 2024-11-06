@@ -54,12 +54,12 @@ export default function ChatInterface() {
           <h1 className="text-4xl font-bold text-gray-300 dark:text-gray-400 mb-8">
             <AnimatedText text="MedInsight: Your AI rare disease research assistant" />
           </h1>
-          <div className="w-full max-w-xl px-4">
+          <div className="w-full max-w-2xl px-4">
             <div className="flex items-center space-x-2">
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about disease cures..."
+                placeholder="Ask questions about childhood Acute Lymphoblastic Leukemia..."
                 className="flex-1 border-none bg-gray-800 text-white p-6"
                 onKeyPress={(e) => e.key === "Enter" && handleSend()}
               />
@@ -114,7 +114,7 @@ export default function ChatInterface() {
               <Input
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
-                placeholder="Ask about disease cures..."
+                placeholder="Ask questions about childhood Acute Lymphoblastic Leukemia..."
                 className="flex-1 border-none bg-gray-800 text-white"
                 onKeyPress={(e) => {
                   if (e.key === "Enter" && !isLoading) {
