@@ -57,6 +57,7 @@ export default function ChatInterface() {
           <div className="w-full max-w-2xl px-4">
             <div className="flex items-center space-x-2">
               <Input
+                autoFocus
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask questions about childhood Acute Lymphoblastic Leukemia..."
@@ -113,6 +114,7 @@ export default function ChatInterface() {
             <div className="max-w-3xl mx-auto flex items-center space-x-2">
               <Input
                 value={input}
+                autoFocus
                 onChange={(e) => setInput(e.target.value)}
                 placeholder="Ask questions about childhood Acute Lymphoblastic Leukemia..."
                 className="flex-1 border-none bg-gray-800 text-white"
