@@ -8,6 +8,7 @@ import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import ReactMarkdown from "react-markdown";
 import { Loader2, Send } from "lucide-react";
+import AnimatedText from "@/components/animated-text";
 
 export default function ChatInterface() {
   interface Message {
@@ -51,7 +52,7 @@ export default function ChatInterface() {
       {messages.length === 0 ? (
         <div className="flex flex-col items-center justify-center flex-grow">
           <h1 className="text-4xl font-bold text-gray-300 dark:text-gray-400 mb-8">
-            MedInsight: Your AI rare disease research assistant
+            <AnimatedText text="MedInsight: Your AI rare disease research assistant" />
           </h1>
           <div className="w-full max-w-xl px-4">
             <div className="flex items-center space-x-2">
