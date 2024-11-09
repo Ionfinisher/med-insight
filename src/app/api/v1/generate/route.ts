@@ -5,7 +5,7 @@ const PGSQLURL = process.env.DATABASE_URL!;
 
 if (!PGSQLURL) {
   throw new Error(
-    "Please define the DATABASE_URL environment variable inside .env.local"
+    "Please define the DATABASE_URL environment variable inside .env"
   );
 }
 
