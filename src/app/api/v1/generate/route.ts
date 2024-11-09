@@ -1,17 +1,22 @@
 import { NextResponse, NextRequest } from "next/server";
-import { PrismaClient } from "@prisma/client";
+import { Client } from "pg";
 
-const prisma = new PrismaClient();
+const client = new Client({
+  connectionString: process.env.DATABASE_URL,
+});
+
+client.connect();
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const { question } = await request.json();
 
   try {
-    const answer = await prisma.$queryRaw`
-    SELECT * FROM get_related_papers(${question});
-  `;
+    const answer = await client.query(`
+      SELECT generate_rag_answer('${question}');
+  `);
 
-    return NextResponse.json(answer);
+    const generateRagAnswer = answer.rows[0].generate_rag_answer;
+    return NextResponse.json(generateRagAnswer);
   } catch (error) {
     console.error("Error fetching papers:", error);
     return NextResponse.json(

@@ -22,6 +22,28 @@ export default function ChatInterface() {
   const scrollAreaRef = useRef(null);
   const endOfMessagesRef = useRef<HTMLDivElement>(null);
 
+  const generate_rag_answer = async (message: string) => {
+    try {
+      const response = await fetch("/api/v1/generate", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ question: message }),
+      });
+
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.error("Error calling generate API:", error);
+      return { error: "Failed to generate response. Please try again later." };
+    }
+  };
+
   const handleSend = async () => {
     if (input.trim() === "") return;
 
@@ -30,15 +52,13 @@ export default function ChatInterface() {
     setInput("");
     setIsLoading(true);
 
-    setTimeout(() => {
-      const aiResponse = {
-        role: "assistant",
-        content:
-          "*I'm analyzing your query* about disease cures. Please note that I'm a demonstration and don't provide real medical advice.",
-      };
-      setMessages((prevMessages) => [...prevMessages, aiResponse]);
-      setIsLoading(false);
-    }, 2000);
+    const response = await generate_rag_answer(input);
+    const aiResponse = {
+      role: "assistant",
+      content: response.error || response,
+    };
+    setMessages((prevMessages) => [...prevMessages, aiResponse]);
+    setIsLoading(false);
   };
 
   useEffect(() => {
