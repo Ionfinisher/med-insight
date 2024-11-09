@@ -155,7 +155,7 @@ export default function ChatInterface() {
             </div>
             <p className="text-sm text-gray-400 text-center py-2">
               The information provided here is for demonstration purposes only
-              and does not constitute medical advice.
+              and does not constitute a medical advice.
             </p>
           </div>
         </>
