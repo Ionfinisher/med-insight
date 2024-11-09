@@ -31,7 +31,7 @@ export const metadata: Metadata = {
     title: "MedInsight",
     description:
       "An ai powered medecine insight app built with Next.js, Postgresql",
-    url: "https://medinsight.vercel.app",
+    url: "https://medinsight-lyart.vercel.app",
     siteName: "MedInsight",
     images: [
       {
