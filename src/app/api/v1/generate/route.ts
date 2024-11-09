@@ -10,7 +10,7 @@ if (!PGSQLURL) {
 }
 
 const client = new Client({
-  connectionString: process.env.DATABASE_URL,
+  connectionString: PGSQLURL,
 });
 
 client.connect();
