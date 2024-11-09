@@ -1,6 +1,14 @@
 import { NextResponse, NextRequest } from "next/server";
 import { Client } from "pg";
 
+const PGSQLURL = process.env.DATABASE_URL!;
+
+if (!PGSQLURL) {
+  throw new Error(
+    "Please define the DATABASE_URL environment variable inside .env.local"
+  );
+}
+
 const client = new Client({
   connectionString: process.env.DATABASE_URL,
 });
